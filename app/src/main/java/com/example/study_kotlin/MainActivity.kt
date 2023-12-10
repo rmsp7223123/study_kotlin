@@ -1,8 +1,9 @@
 package com.example.study_kotlin
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.study_kotlin.databinding.ActivityMainBinding
+import java.util.Map
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,4 +42,46 @@ class MainActivity : AppCompatActivity() {
         println("str2 : $str2, length : $len");
         println("str2 : $str2, lenght : ${str2?.length ?: -1}"); // null이면 -1 반환, 아니면 length 반환
     }
+
+    private fun TypeConversion() { // 형변환
+
+//        toByte() : Byte 타입으로 변환
+//        toUByte() : unsigned 타입인 UByte 타입으로 변환
+//        toShort() : Short 타입으로 변환
+//        toUShort() : unsigned 타입인 UShort 타입으로 변환
+//        toInt() : Int 타입으로 변환
+//        toUInt() : unsigned 타입인 UInt 타입으로 변환
+//        toLong() : Long 타입으로 변환
+//        toULong() : unsigned 타입인 ULong 타입으로 변환
+//        toFloat() : Float 타입으로 변환
+//        toDouble() : Double 타입으로 변환
+//        toChar() : Char 타입으로 변환
+//        toString() : String 타입으로 변환
+//        toBigInteger() : BigInteger 타입으로 변환
+//        toBigDecimal() : BigDecimal 타입으로 변환
+
+        val a: Long = 34;
+        val b: Int = a.toInt();  // Long을 Int로 강제 형변환
+
+        val str: String = "123";
+        val c = Integer.parseInt(str);  // 정수 123으로 변환
+
+        // 스마트 캐스트
+        val map = Map.of<String, Any>("key1", "value1", "key2", 2);
+        val a2 = map["key1"];
+        if (a2 is String) { // if문의 조건식에서 is로 타입을 검사한 경우
+            // 해당 if문 블록의 내부에서는 따로 형변환을 해주지 않아도 자동으로 검사한 타입으로 취급
+            println(a2.length);
+        };
+
+        val input1:Any = "test";
+        if (input1 is String) { // is로 자료형 체크 Int, Float, String 등이 사용가능
+            val output1 : String = input1 as String; // as로 any 자료형을 String으로 변환
+        };
+
+        val output2:String? = input1 as String?; // 널허용자료형도 가능
+        val output3 = input1 as? String // as?는 변환시 null이 반환될 수 있을 때 예외 상황을 만들지 않고 null을 반환
+        val output4 = input1 as? String ?: "None"; // 형변환 실패시 None으로 초기화
+
+    };
 };
