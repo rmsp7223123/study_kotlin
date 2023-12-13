@@ -97,4 +97,79 @@ class MainActivity : AppCompatActivity() {
         array2.set(0, 1000) //= array2[0] = 1000 0번 인덱스에 1000을 넣음
         array2.get(2) //= array[2]
     }
+
+    private fun conditionalSentence() { // 조건문
+        val number = 10;
+
+        if (number > 0) { // if 문은 조건을 확인하여 특정 코드 블록을 실행
+            println("양수");
+        } else if (number < 0) {
+            println("음수");
+        } else {
+            println("0");
+        };
+
+
+        when (number) { // when 문은 여러 경우(case)를 처리할 때 사용
+            1 -> println("number는 1입니다.");
+            2, 3 -> println("number는 2 또는 3입니다.");
+            in 4..10 -> println("number는 4에서 10 사이입니다.");
+            else -> println("그 외의 경우입니다.");
+        };
+
+
+        val result = if (number % 2 == 0) { // 표현식으로 사용하기
+            "짝수입니다.";
+        } else {
+            "홀수입니다.";
+        };
+        println(result);
+
+
+
+        val str = "123"
+        try { // try 블록 안에서 예외가 발생할 수 있는 코드를 작성하고, 예외가 발생하면 catch 블록에서 해당 예외를 처리
+            val num = str.toInt(); // 예외가 발생할 수 있는 코드
+            println("숫자로 변환된 값: $num");
+        } catch (e: NumberFormatException) { // 예외를 잡아서 처리하는 부분
+            println("숫자로 변환할 수 없는 문자열입니다.");
+        } catch (e: Exception) { // 다중 catch블록이 가능
+            println("일반적인 예외 발생: ${e.message}")
+        } finally { // 선택적으로 사용할 수 있는 finally 블록
+            println("처리 완료");
+        };
+
+        val result2 = try { // 표현식으로 사용하기
+            str.toInt();
+        } catch (e: NumberFormatException) {
+            -1;
+        } finally {
+            println("처리 완료");
+        };
+        println(result2);
+
+
+        val name: String? = "이름"
+        name?.let { // 객체가 null이 아닌 경우에 코드 블록을 실행
+            println("Name: $it"); // name이 null이 아닐경우에 실행됨
+        };
+
+
+        val result3 = run {// 객체에 대해 수행할 코드 블록을 지정하고
+                                          // 해당 객체를 이 블록의 수신 객체로 사용
+            val x = 10;
+            val y = 20;
+            x + y;
+        };
+        println("Result: $result3");
+
+
+        val value = 10;
+        value.also { // 수신 객체를 인자로 받아 수신 객체를 그대로 반환
+                           // 주로 수신 객체를 변경하지 않으면서 부수 효과를 가질 때 사용
+            println("Value: $it"); // value 값을 출력
+        }.let {
+            println("It doubled: ${it * 2}"); // value 값의 2배를 출력
+        };
+    };
 };
