@@ -84,4 +84,17 @@ class MainActivity : AppCompatActivity() {
         val output4 = input1 as? String ?: "None"; // 형변환 실패시 None으로 초기화
 
     };
+
+    private fun array() { // 배열
+        var array = arrayOf(1,2,3); // 특정 값을 넣어서 배열을 생성하는 경우
+        var array2 = Array(10) { 0 }; // 크기만 정해서 배열을 생성하는 경우
+                                           // 크기가 10인 배열을 만드는 것을 의미하고, 중괄호 안의 0은 배열의 각 요소에 초기화할 값
+        var anyArray = arrayOf(1,2,3,"adsfdsf",4,true); // 특정 타입을 지정하지 않은채로 배열을 생성하면 어떤 값이든 상관없음
+
+        var arrayInt = arrayOf<Int>(1,2,3,4,5); // 특정 타입을 지정
+        var arrayString = arrayOf<String>("adfa","asdfadsf");
+
+        array2.set(0, 1000) //= array2[0] = 1000 0번 인덱스에 1000을 넣음
+        array2.get(2) //= array[2]
+    }
 };
