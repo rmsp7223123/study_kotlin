@@ -172,4 +172,32 @@ class MainActivity : AppCompatActivity() {
             println("It doubled: ${it * 2}"); // value 값의 2배를 출력
         };
     };
+
+    private fun loop() { // 반복문
+        fun main(args:Array<String>) {
+            for(i: Int in 1..10) print("$i ");//1, 2, 3, 4, 5 ... 10
+            val len: Int = 5;
+            for(i in 1..len) print("$i ");//1, 2, 3, 4, 5
+            for(i in 1 until len) print("$i ");//1, 2, 3, 4
+
+
+            for(i: Int in 1..10 step(2)) print("$i ");//1, 3, 5, 7, 9
+            for(i in 10..1 step(-1)) print("$i ");// 음수는 불가능
+
+            for(i in 10 downTo 1) print("$i "); //10, 9, 8, 7 ... 1
+            for(i in 10 downTo 1 step(2)) print("$i ");//10, 8, 6, 4, 2
+
+            val arr: IntArray = intArrayOf(10, 20, 30, 40, 50); // 배열을 직접 입력해서 값을 호출
+            for(i in arr) print("$i "); //10, 20, 30, 40, 50
+            for(i in arr.reversed()) print("$i ");//50, 40, 30, 20, 10
+            val list = listOf<String>("korea", "salmon", "T_T");
+            for(i in list) print("$i ");// korea, salmon, T_T
+            for(i in 0 until list.count()) print("${list[i]} ");//korea, salmon, T_T
+
+            var a: Int = 1;
+            while(a <= 10) print("${a++} ")// 1, 2, 3, 4, 5 ... 10
+            do {print("${a--} ")} while(a > 0) //output : 11, 10, 9, 8, 7 ... 1
+
+        }
+    }
 };
