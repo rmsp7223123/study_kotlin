@@ -237,6 +237,48 @@ class MainActivity : AppCompatActivity() {
         convertAndPrint(123);
     }
 
+    private fun collection() { // 컬렉션
+        // List는 순서가 있는 데이터의 집합으로 중복된 요소를 가질 수 있음
+        val immutableList = listOf(1, 2, 3, 4, 5); // 변경할 수 없는(immutable) 리스트
+        val mutableList = mutableListOf("apple", "banana", "orange"); // 변경 가능한(mutable) 리스트
+
+        // Set는 순서가 없고 중복 요소를 허용하지 않음
+        val immutableSet = setOf(1, 2, 3, 4, 5); // setOf()는 변경할 수 없는 세트
+        val mutableSet = mutableSetOf("apple", "banana", "orange"); // mutableSetOf()은 변경 가능한 세트
+
+        // Map은 키-값 쌍의 집합으로, 각 키는 유일해야 함
+        val immutableMap = mapOf("a" to 1, "b" to 2, "c" to 3); // mapOf()는 변경할 수 없는 맵
+        val mutableMap = mutableMapOf("x" to "apple", "y" to "banana", "z" to "orange"); // mutableMapOf()은 변경 가능한 맵
+
+        // 해쉬맵은 키와 값으로 이루어진 데이터를 저장하는 해시테이블 기반의 컬렉션
+        val hashMap = mutableMapOf<String, Int>(); // 키는 String, 값은 Int인 빈 해쉬맵 생성
+        hashMap["apple"] = 5; // "apple"이라는 키에 5라는 값을 할당
+        hashMap["banana"] = 3; // "banana"라는 키에 3이라는 값을 할당
+
+        // 맵과 해쉬맵의 차이점
+        // 해쉬맵은 해시 테이블을 기반으로 하며,
+        // 내부적으로 해시 함수를 사용하여 키-값 쌍을 저장
+        // 이에 반해 일반적인 맵은 내부 구현체에 따라 다양한 방식으로 데이터를 관리
+        // 일반적으로 해쉬맵이 더 빠름
+
+        val set = setOf(1, 2, 3, 4, 5);
+        val list = set.toList(); // 리스트로 변환
+        println(list); // 출력: [1, 2, 3, 4, 5]
+
+        val list2 = listOf(1, 2, 2, 3, 4, 4, 5);
+        val set2 = list2.toSet(); // Set으로 변환
+        println(set2); // 출력: [1, 2, 3, 4, 5];
+
+        val pairsList = listOf("a" to 1, "b" to 2, "c" to 3);
+        val map = pairsList.toMap(); // 컬렉션을 맵으로 변환, 키-값으로 구성 되어야함
+        println(map["b"]); // 출력: 2
+
+        val list3 = listOf("a" to 1, "b" to 2, "c" to 3);
+        val hashMap2 = list3.toMap().toMutableMap(); // 리스트를 맵으로 변환한 후, 해당 맵을 해쉬맵으로 변환
+        println(hashMap2["a"]); // 출력 : 1
+
+    };
+
 
 
 
