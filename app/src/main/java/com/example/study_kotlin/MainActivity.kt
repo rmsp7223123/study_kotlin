@@ -206,4 +206,38 @@ class MainActivity : AppCompatActivity() {
         // internal  -> 같은 모듈에서만 접근 가능
         // private   -> 선언된 클래스 내에서만 접근 가능
     }
+
+    class Box<T>(var content: T) { // 제네릭 , T = 타입파라미터, 어떤 타입의 요소든 다 담을 수 있음
+        fun getContent(): T {
+            return content;
+        };
+    };
+
+    fun <T> printContent(content: T) { // 제네릭 함수
+        println("Content: $content");
+    }
+
+    fun <T : Number> convertAndPrint(value: T) { // 제네릭 제약
+        val convertedValue = value.toDouble() // Number 타입을 상속받은 타입만 허용됨
+        println("Converted value: $convertedValue")
+    }
+
+    private fun generic() { // 제네릭
+        // 파일 시점에 타입 불일치 오류를 잡아내므로 런타임 오류를 줄여줌
+        // 하나의 제네릭 클래스 또는 함수를 여러 타입에 대해 재사용할 수 있음
+        // 다양한 타입을 지원하면서도 타입 안전성을 유지
+
+        val intBox = Box(10); // int타입 저장
+        val stringBox = Box("adsfsd"); // String타입 저장
+        val intValue = intBox.getContent();
+        val stringValue = stringBox.getContent();
+
+        printContent("gdg");
+        printContent(123);
+        convertAndPrint(123);
+    }
+
+
+
+
 };
