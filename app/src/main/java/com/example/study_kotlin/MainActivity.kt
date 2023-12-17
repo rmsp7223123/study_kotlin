@@ -7,7 +7,9 @@ import java.util.Map
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding;
+    private lateinit var binding : ActivityMainBinding; // 변수의 초기화 미루기
+    // var 키워드로 선언한 변수만 가능
+    // 기본형(Primitive) 타입으로 분류되는 Int, Long, Short, Double, Float, Boolean, Byte에는 사용할 수 없음
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
@@ -23,8 +25,6 @@ class MainActivity : AppCompatActivity() {
 
         // name = "홍길동" // 컴파일 오류
         age = 20; // 가능
-
-
 
         var str1 : String = "test";
         // str1 = null
