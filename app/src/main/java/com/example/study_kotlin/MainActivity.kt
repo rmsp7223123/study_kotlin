@@ -279,13 +279,70 @@ class MainActivity : AppCompatActivity() {
 
     };
 
-    private fun dataClass() {
+    private fun dataClass() { // 데이터 클래스
         val test1 = DataTest("이름","이메일",123);
         val test2 = DataTest("이름","이메일",123);
         val test3 = test1.copy(name = "이름3");
         println(test1); // 이름 이메일 123
         println(test3); // 이름3 이메일 123
         println(test1.hashCode()); // = println(test2.hashCode())
+    }
+
+    fun sum(a: Int, b: Int):Int { // 일반 함수
+        // 가장 일반적인 함수 형태로, 매개변수를 받아 연산을 수행하고 값을 반환
+        return a + b;
+    };
+
+    fun operateOnNumbers(a: Int, b: Int, operation: (Int, Int) -> Int): Int { // 고차 함수
+        // 다른 함수를 매개변수로 받거나 함수를 반환하는 함수
+        // 함수를 일급 객체(First-class Citizen)로 취급하고, 함수를 다루는 함수
+        return operation(a, b);
+    };
+
+    fun calculate(a: Int, b: Int): Int { // 내부 함수
+        // 다른 함수 내부에 정의된 함수
+        // 해당 함수는 외부에서 직접 접근할 수 없고, 외부 함수 내부에서만 호출 가능
+        fun add(): Int {
+            return a + b;
+        };
+        return add();
+    };
+
+    val multiply = fun(x: Int, y: Int): Int { // 익명 함수
+        // 이름 없이 정의된 함수로, 변수에 할당하여 사용 할 수 있음
+        // 주로 고차 함수의 매개변수로 사용
+        return x * y
+    }
+
+    val multiply2: (Int, Int) -> Int = { x, y -> x * y }; // 익명 함수 람다식
+
+    fun String.removeFirstChar(): String { // 확장 함수
+        // 이미 존재하는 클래스에 새로운 함수를 추가하는 기능
+        // 클래스의 멤버 함수처럼 호출할 수 있지만, 해당 클래스를 직접 수정하지 않고도 함수를 추가할 수 있음
+        return this.substring(1);
+    };
+
+    private fun function() { // 함수
+        // 함수(Function)는 프로그래밍에서 특정 작업을 수행하는 블록 또는 코드 단위
+        // 함수는 프로그래밍에서 핵심적인 요소로, 코드의 재사용성, 가독성, 유지보수성을 높이는 데 중요한 역할
+        val result = sum(1,2);
+        println(result); // 출력 : 3
+
+        val addition = operateOnNumbers(5, 3) { x, y -> x + y };
+        val multiplication = operateOnNumbers(5, 3) { x, y -> x * y };
+
+        println(addition); // 출력: 8
+        println(multiplication); // 출력: 15
+
+        val result2 = calculate(5, 3);
+        println(result2) // 출력: 8
+
+        val result3 = multiply(5, 3);
+        println(result3) // 출력: 15
+
+        val originalString = "Hello";
+        val modifiedString = originalString.removeFirstChar();
+        println(modifiedString); // 출력: "ello"
     }
 
 
