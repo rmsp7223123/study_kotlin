@@ -279,6 +279,15 @@ class MainActivity : AppCompatActivity() {
 
     };
 
+    private fun dataClass() {
+        val test1 = DataTest("이름","이메일",123);
+        val test2 = DataTest("이름","이메일",123);
+        val test3 = test1.copy(name = "이름3");
+        println(test1); // 이름 이메일 123
+        println(test3); // 이름3 이메일 123
+        println(test1.hashCode()); // = println(test2.hashCode())
+    }
+
 
 
 
